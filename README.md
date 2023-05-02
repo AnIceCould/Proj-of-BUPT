@@ -8,4 +8,6 @@ You'll see some of MY projects during studying the Beijing University of Posts a
 此仓库仅展示我负责的相关内容
 
 # EN:
-#### Peach: A proj related to use CV and AI to select peach.
+#### Peach: A proj to select peach.
+We use CV and AI to find the varieties of peachs, as well as the ripeness of them, which helps people to decide whether to buy.
+In this repository, you can only see the code I'm responsible for.
