@@ -97,7 +97,8 @@ def formatCut(picName, pic, path):
     return ffPic
 
 
-filePath = 'G:/Temp/14_390'
+filePath = 'G:/Temp/85_425'
+labelPath = 'G:/Temp/85L'
 outPath = 'G:/Temp/after'
 fileName1 = 'G:/Temp/B.txt'
 fileName2 = 'G:/Temp/G.txt'
@@ -119,10 +120,10 @@ for i in thefilelist:
     #获取图片及其灰度图
     img = filePath + '/' + i #英文路径
     image = cv2.imread(img)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #灰度化的图像
+    #gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #灰度化的图像
 
     #按模型裁剪
-    matPic = formatCut(i, image, 'G:/Temp/ttt')
+    matPic = formatCut(i, image, labelPath)
     outimg = cv2.bitwise_and(image,image,mask=matPic) #按位与(带蒙版)
     #cv2.imwrite(outPath + '/' + i, outimg)
     
