@@ -1,7 +1,7 @@
 ###带接口整合RGB成熟度判断
-##input1:图片地址
-##input2:一个数字 桃子种类 0为八五 1为九零
-##output:成熟度 1成熟 2较成熟 3未成熟
+##input1:图片地址 94行
+##input2:一个数字 95行 桃子种类 0为八五 1为九零
+##output:成熟度 120行 1成熟 2较成熟 3未成熟
 
 from webbrowser import get
 import numpy
@@ -91,23 +91,23 @@ def dataGuess(filename, dataInf):
     return(classifierResult)
 
 #文件位置定义区
-filePath = 'G:/Temp/before/test.png' #输入接口：图片地址
-pattern = 1 #输入接口：桃子类型
-data90Path = "G:/Temp/90data.txt" #存放90桃子数据的地址
-data85Path = "G:/Temp/85data.txt" #存放85桃子数据的地址
-outPath = 'G:/Temp/after/text.jpg' #输出裁剪后图片 #调试用使用时请注释掉--------------------
+filePath = '../Pic/before.png' #输入接口：图片地址
+pattern = 0 #输入接口：桃子类型
+data90Path = "../Data/90data.txt" #存放90桃子数据的地址
+data85Path = "../Data/85data.txt" #存放85桃子数据的地址
+outPath = '../Pic/after.jpg' #输出裁剪后图片 调试用
 
 #处理区
 image = cv2.imread(filePath)
 matPic = oneFtwo(image) #中心裁剪
 outImg = cv2.bitwise_and(image,image,mask=matPic) #按位与(带蒙版)
-cv2.imwrite(outPath, outImg) #调试用使用时请注释掉-----------------------------------------
+#cv2.imwrite(outPath, outImg) #调试用 使用时请注释掉
 mean1 = cv2.mean(outImg,matPic) #得出平均RGB值
 mean2 = [0,0,0]
 mean2[0] = round(mean1[0])
 mean2[1] = round(mean1[1])
 mean2[2] = round(mean1[2])
-print(mean2)
+#print(mean2) #平均BGR
 
 #猜测区
 if pattern == 1:
