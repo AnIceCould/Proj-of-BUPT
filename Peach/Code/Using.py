@@ -1,12 +1,30 @@
-###根据KNN算法进行成熟度预测###
-###接口：
-##input1:承载三个数字的数组 B G R 
+###带接口整合RGB成熟度判断
+##input1:图片地址
 ##input2:一个数字 桃子种类 0为八五 1为九零
-##output:一个数字 1成熟 2较成熟 3未成熟
+##output:成熟度 1成熟 2较成熟 3未成熟
 
 from webbrowser import get
 import numpy
 import operator
+import sys,os
+import cv2
+import math
+
+def oneFtwo(pre_pic):
+    '''
+    以中心为基准二分之一圆蒙版
+    pre_pic:原始图片
+    re_pic:预设好的二分圆蒙版
+    '''
+    size = pre_pic.shape
+    w = size[1]
+    h = size[0]
+    w2 = round(w/2)
+    h2 = round(h/2)
+    #获得中心蒙版
+    zimg = numpy.zeros((h, w, 1), numpy.uint8)
+    re_pic = cv2.circle(zimg, (w2,h2), min(h2,w2)-20, 255,-1)
+    return re_pic
 
 #读取文本数据#
 def creatMatrix(filename):
@@ -56,22 +74,6 @@ def classifyk(inX,dataSet,labels,k):
     sortedClassCount = sorted(classCount.items(),key=operator.itemgetter(1),reverse=True)#排序
     return sortedClassCount[0][0]
 
-
-#测试#
-def dataTest(filename):
-    hoRatio = 0.1#测试比例
-    [returnMat,classVector] = creatMatrix(filename)#建立数据集
-    normMat = numNorm(returnMat)[0]
-    m = normMat.shape[0]
-    numTestVecs = int(m*hoRatio)
-    errorCount = 0.0
-    for i in range(numTestVecs):#检测正误
-        classifierResult = classifyk(normMat[i,:],normMat[numTestVecs:m,:],classVector[numTestVecs:m],3)
-        print("guass:%d\treal:%d\n"%(classifierResult,classVector[i]))
-        if(classifierResult != classVector[i]):
-            errorCount += 1.0
-    print("error rate is:%f"%(errorCount/float(numTestVecs)))
-
 #单位猜测
 def dataGuess(filename, dataInf):
     '''
@@ -88,12 +90,31 @@ def dataGuess(filename, dataInf):
     classifierResult = classifyk(testMat,normMat,classVector,3)
     return(classifierResult)
 
-pattern = 1 #0为八五 1为九零
-if pattern == 1:
-    dataPath = "G:/Temp/90data.txt"
-else:
-    dataPath = "G:/Temp/85data.txt"
+#文件位置定义区
+filePath = 'G:/Temp/before/test.png' #输入接口：图片地址
+pattern = 1 #输入接口：桃子类型
+data90Path = "G:/Temp/90data.txt" #存放90桃子数据的地址
+data85Path = "G:/Temp/85data.txt" #存放85桃子数据的地址
+outPath = 'G:/Temp/after/text.jpg' #输出裁剪后图片 #调试用使用时请注释掉--------------------
 
-#dataTest(dataPath)
-giveData = [90,108,203]
-print(dataGuess(dataPath, giveData))
+#处理区
+image = cv2.imread(filePath)
+matPic = oneFtwo(image) #中心裁剪
+outImg = cv2.bitwise_and(image,image,mask=matPic) #按位与(带蒙版)
+cv2.imwrite(outPath, outImg) #调试用使用时请注释掉-----------------------------------------
+mean1 = cv2.mean(outImg,matPic) #得出平均RGB值
+mean2 = [0,0,0]
+mean2[0] = round(mean1[0])
+mean2[1] = round(mean1[1])
+mean2[2] = round(mean1[2])
+print(mean2)
+
+#猜测区
+if pattern == 1:
+    dataPath = data90Path
+else:
+    dataPath = data85Path
+outPut = dataGuess(dataPath, mean2)
+
+#输出接口
+print(outPut)

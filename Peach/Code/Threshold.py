@@ -1,6 +1,9 @@
 ###阈值分割算法###
 ###按标注裁剪###
 ###RGB统计###
+###接口：
+##input:图片地址
+##output:承载三个数字的数组 B G R
 
 import sys,os
 import numpy as np
@@ -96,9 +99,9 @@ def formatCut(picName, pic, path):
     formatFile.close()
     return ffPic
 
-
-filePath = 'G:/Temp/85_425'
-labelPath = 'G:/Temp/85L'
+#文件位置定义区
+filePath = 'G:/Temp/90_508/c'
+labelPath = 'G:/Temp/90L'
 outPath = 'G:/Temp/after'
 fileName1 = 'G:/Temp/B.txt'
 fileName2 = 'G:/Temp/G.txt'
@@ -127,10 +130,10 @@ for i in thefilelist:
     outimg = cv2.bitwise_and(image,image,mask=matPic) #按位与(带蒙版)
     #cv2.imwrite(outPath + '/' + i, outimg)
     
-#     #中心裁剪
-#     test_pic = oneFtwo(image)
-#     outimg = cv2.bitwise_and(image,image,mask=test_pic) #按位与(带蒙版)
-#     cv2.imwrite(outPath+ '/' + i,outimg)
+    # #中心裁剪
+    # test_pic = oneFtwo(image)
+    # outimg = cv2.bitwise_and(image,image,mask=test_pic) #按位与(带蒙版)
+    # #cv2.imwrite(outPath+ '/' + i,outimg)
     
 #
 #     #合并阈值分割
@@ -141,19 +144,19 @@ for i in thefilelist:
 
     #得出平均RGB值
     mean1 = cv2.mean(outimg,matPic)
-    #B
-    theFile = open(fileName1,'a')
-    theFile.write(str(round(mean1[0])))
-    theFile.write('\n')
-    theFile.close()
-    #G
-    theFile = open(fileName2,'a')
-    theFile.write(str(round(mean1[1])))
-    theFile.write('\n')
-    theFile.close()
-    #R
-    theFile = open(fileName3,'a')
-    theFile.write(str(round(mean1[2])))
-    theFile.write('\n')
-    theFile.close()
+    # #B
+    # theFile = open(fileName1,'a')
+    # theFile.write(str(round(mean1[0])))
+    # theFile.write('\n')
+    # theFile.close()
+    # #G
+    # theFile = open(fileName2,'a')
+    # theFile.write(str(round(mean1[1])))
+    # theFile.write('\n')
+    # theFile.close()
+    # #R
+    # theFile = open(fileName3,'a')
+    # theFile.write(str(round(mean1[2])))
+    # theFile.write('\n')
+    # theFile.close()
 
