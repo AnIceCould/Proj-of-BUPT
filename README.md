@@ -1,6 +1,6 @@
 # Proj-of-BUPT
 在本项目中，您将会看到我在**北京邮电大学**时所做的大部分项目。<br>
-You'll see some of MY projects during my studying in the **Beijing University of Posts and Telecommunications**.
+You'll see some of MY projects during my studies at the **Beijing University of Posts and Telecommunications**.
 
 ---
 
