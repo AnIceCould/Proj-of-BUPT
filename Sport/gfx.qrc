@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/bis">
+        <file>Image/Background.jpeg</file>
+        <file>Image/ball.png</file>
+        <file>Image/rember.png</file>
+        <file>Image/lember.png</file>
+        <file>data/score.ini</file>
+    </qresource>
+</RCC>
