@@ -1,6 +1,6 @@
 # Proj-of-BUPT
 在本项目中，您将会看到我在**北京邮电大学**时所做的大部分项目。<br>
-You'll see some of MY projects during studying the **Beijing University of Posts and Telecommunication**.
+You'll see some of MY projects during studying the **Beijing University of Posts and Telecommunications**.
 
 ---
 
@@ -25,3 +25,10 @@ You'll see some of MY projects during studying the **Beijing University of Posts
 ### Sport: 程序设计实验 桌面球小游戏
 语言：C++, QT<br>
 在QT中实现了一个桌面球小游戏
+
+### Garden: 综合实验 智慧大棚
+语言：Go<br>
+实现一个应用层转发服务器，本课程尚未截止，暂不提供源码
+
+## Other: 其他课程代码
+太多了，有兴趣再加
