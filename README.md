@@ -38,7 +38,7 @@ You'll see some of MY projects during my studies at the **Beijing University of 
 
 ### Garden: 综合实验 智慧大棚
 语言：Go<br>
-实现一个应用层转发服务器，本课程尚未截止，暂不提供源码
+实现一个应用层转发服务器。
 
 ---
 
