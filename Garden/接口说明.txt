@@ -1,0 +1,39 @@
+Go语言程序使用端口8080
+Python语言程序使用端口8088
+
+Go提供Json风格POST接口：/postInfo_s
+json格式
+{
+	"temperature":	string
+	"humidity":		string
+	"illumination":	string
+	"id":				string
+}
+
+Python提供Param风格POST接口：
+/postInfo/:id/:temperature/:humidity/:illumination
+
+Go提供GET接口：/getInfo
+json格式
+{
+	"0":{
+		"hour":			string
+		"minute":		string
+		"temperature":	string
+		"humidity":		string
+		"illumination":	string
+	}
+	"1":{
+		"hour":			string
+		"minute":		string
+		"temperature":	string
+		"humidity":		string
+		"illumination":	string
+	}
+}
+
+提供两个配置文件（与main.go以及Web.py在同一目录下）
+fconfig.ini
+sconfig.ini
+分别缓存设备A与B的上一条信息
+
