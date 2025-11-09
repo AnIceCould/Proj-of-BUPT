@@ -42,5 +42,11 @@ You'll see some of MY projects during my studies at the **Beijing University of 
 
 ---
 
+### Shoot: Python 程序设计 打外星人
+语言：Python<br>
+实现一个打外星人的小游戏。
+
+---
+
 ### Other: 其他课程代码
 太多了，有兴趣再加
