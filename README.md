@@ -52,7 +52,3 @@ You'll see some of MY projects during my studies at the **Beijing University of 
 语言：Multisim<br>
 实现函数信号发生器的硬件仿真。
 
----
-
-### Other: 其他课程代码
-太多了，有兴趣再加
